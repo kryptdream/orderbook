@@ -10,6 +10,7 @@ class Part(Enum):
     BUY = 'bid'
     SELL = 'ask'
 
+
 class OrderBook:
     """ 
     Base class for working with OrderBook
@@ -24,8 +25,6 @@ class OrderBook:
         self.bid_volumes = []
         self.ask_book = []
         self.bid_book = []
-
-
 
     def _add_order(self, order):
         pattern_type = re.compile('%s|%s' %(Part.BUY.value,Part.SELL.value))
@@ -65,7 +64,6 @@ class OrderBook:
             order = self.orders.get(order_id)
             return (order.type, order.price, order.volume)
         raise KeyError('{0} is not in orders dict'.format(order_id))
-
 
     def modify_order(self, order_id, price, volume):
         """ 
@@ -126,6 +124,7 @@ class OrderBook:
         for i in range(len(self.bid_prices)):
             self.bid_book.append({'price':self.bid_prices[i], 'volume': self.bid_volumes[i]})
         return "{ 'Asks': %s 'Bids': %s  }" % (self.ask_book, self.bid_book)
+
 
 @dataclass
 class Order:

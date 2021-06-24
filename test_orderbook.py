@@ -4,7 +4,8 @@ import re
 import random
 
 def generate_new_order(order_id):
-    return Order(order_id, random.choices([Part.BUY.value, Part.SELL.value])[0], random.randint(2000,10000), random.randint(100,1000))
+    return Order(order_id, random.choices([Part.BUY.value, Part.SELL.value])[0], \
+                random.randint(2000,10000), random.randint(100,1000))
 
 def test_orderbook_class_positive():
     OrderBook()
